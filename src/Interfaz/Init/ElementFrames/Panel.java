@@ -11,6 +11,6 @@ public class Panel extends JPanel {
         setLayout(null);
         Logo logo = new Logo(MARGIN_INIT);
         add(logo);
-        logo.repaint();
+        add(new ProgressBar(WIDTH,MARGIN_INIT));
     }
 }
