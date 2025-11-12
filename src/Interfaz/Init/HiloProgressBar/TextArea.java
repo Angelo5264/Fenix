@@ -1,13 +1,10 @@
-package Interfaz.Init.ElementFrames.HiloProgressBar;
+package Interfaz.Init.HiloProgressBar;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class TextArea extends JTextArea {
-    private Thread hilo;
-    public TextArea(){
 
-    }
     public TextArea(int MARGIN){
         setBounds(MARGIN, 100, 400,200);
         setBackground(Color.BLACK);

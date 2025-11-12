@@ -1,6 +1,6 @@
-package Interfaz.Init;
+package Interfaz;
 
-import Interfaz.Init.ElementFrames.Panelnit;
+import Interfaz.Init.Panelnit;
 import Interfaz.Terminal.PanelTerminal;
 
 import javax.swing.*;
@@ -20,7 +20,7 @@ public class StarSystem extends JFrame {
         add(new PanelTerminal(WIDTH,HEIGHT,MARGIN));
         setVisible(true);
     }
-    public static void main(String[] args) {
+    static void main(String[] args) {
         new StarSystem();
     }
 }

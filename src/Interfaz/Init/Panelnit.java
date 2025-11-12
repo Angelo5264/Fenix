@@ -1,7 +1,7 @@
-package Interfaz.Init.ElementFrames;
-import Interfaz.Init.ElementFrames.HiloProgressBar.HiloProgressBar;
-import Interfaz.Init.ElementFrames.HiloProgressBar.ProgressBar;
-import Interfaz.Init.ElementFrames.HiloProgressBar.TextArea;
+package Interfaz.Init;
+import Interfaz.Init.HiloProgressBar.HiloProgressBar;
+import Interfaz.Init.HiloProgressBar.ProgressBar;
+import Interfaz.Init.HiloProgressBar.TextArea;
 import Interfaz.Terminal.PanelTerminal;
 
 import javax.swing.JPanel;

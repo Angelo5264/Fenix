@@ -1,8 +1,7 @@
-package Interfaz.Init.ElementFrames;
+package Interfaz.Init;
 
 import javax.swing.*;
 import java.awt.*;
-import java.net.URL;
 
 public class Logo extends JLabel{
     public Logo(int marginInit){
