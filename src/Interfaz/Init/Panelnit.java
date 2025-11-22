@@ -8,20 +8,25 @@ import javax.swing.JPanel;
 import java.awt.*;
 
 public class Panelnit extends JPanel {
+    private ProgressBar barra;
+    private TextArea textArea;
     public Panelnit(int WIDTH, int HEIGHT, int MARGIN){
         setBounds(0,0, WIDTH,HEIGHT);
         setBackground(Color.BLACK);
         setOpaque(true);
         setLayout(null);
         Logo logo = new Logo(MARGIN);
-        ProgressBar barra = new ProgressBar(WIDTH,MARGIN);
-        TextArea textArea = new TextArea(MARGIN);
-        PanelTerminal panelMostrar= new PanelTerminal();
-        HiloProgressBar hiloProgressBar = new HiloProgressBar(barra,textArea,this, panelMostrar);
-        Thread hilo = new Thread(hiloProgressBar);
-        hilo.start();
+        barra = new ProgressBar(WIDTH,MARGIN);
+        textArea = new TextArea(MARGIN);
+
         add(logo);
         add(barra);
         add(textArea);
+    }
+
+    public void startThread(JPanel panelMostrar, JPanel panelOcultar){
+        HiloProgressBar hiloProgressBar = new HiloProgressBar(this.barra,this.textArea,this, panelMostrar);
+        Thread hilo = new Thread(hiloProgressBar);
+        hilo.start();
     }
 }

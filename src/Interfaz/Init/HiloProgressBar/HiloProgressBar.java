@@ -6,7 +6,7 @@ public class HiloProgressBar implements Runnable{
     private final JLabel progressBar;
     private final JTextArea  initText;
     private final JPanel panelOculto, panelMostrar;
-    protected String linea = "-".repeat(78) + " 0%";
+    private String linea = "-".repeat(78) + " 0%";
     public HiloProgressBar (JLabel progressBar, JTextArea initText, JPanel panelOculto, JPanel panelMostrar){
         this.progressBar=progressBar;
         this.initText=initText;
@@ -18,25 +18,40 @@ public class HiloProgressBar implements Runnable{
         try {
             //Eatado 1
             Thread.sleep(1000);
-            linea = "#".repeat(15) + "-".repeat(45) + " 35%";
-            progressBar.setText(linea);
-            initText.setText("\n\nInitzialice system operative... \n\n");
+            SwingUtilities.invokeLater(() -> {
+                linea = "#".repeat(15) + "-".repeat(45) + " 35%";
+                progressBar.setText(linea);
+                initText.setText("\n\nInitzialice system operative... \n\n");
+            });
+
             // Estado 2
             Thread.sleep(1000);
-            linea = "#".repeat(25) + "-".repeat(25) + " 70%";
-            progressBar.setText(linea);
-            initText.append("Building libraries... \n\n");
+            SwingUtilities.invokeLater(() -> {
+                linea = "#".repeat(25) + "-".repeat(25) + " 70%";
+                progressBar.setText(linea);
+                initText.append("Building libraries... \n\n");
+            });
             // Estado 3
             Thread.sleep(1000);
-            linea = "#".repeat(36) + " 100%";
-            progressBar.setText(linea);
-            initText.append("Compile files... ");
+            SwingUtilities.invokeLater(() ->{
+                linea = "#".repeat(36) + " 100%";
+                progressBar.setText(linea);
+                initText.append("Compile files... ");
+            });
+
             Thread.sleep(1000);
-            panelOculto.setVisible(false);
-            panelMostrar.setVisible(true);
+            SwingUtilities.invokeLater(()->{
+                panelOculto.setVisible(false);
+                panelMostrar.setVisible(true);
+                if(panelOculto.getParent()!=null){
+                    panelOculto.getParent().revalidate(); // vamos al padre qeu contiene dicho panel y recalculamos el tamaño
+                    panelOculto.getParent().repaint(); // redibujamos en el padre de dicho panel
+                }
+            });
         }catch (Exception e){
             System.out.println("Error en el hilo de barra de progreso");
             System.out.println(e.getMessage());
         }
     }
+
 }
