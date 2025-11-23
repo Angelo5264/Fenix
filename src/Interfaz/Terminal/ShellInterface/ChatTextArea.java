@@ -8,9 +8,9 @@ public class ChatTextArea extends JTextArea {
         setBounds(MARGIN, 20, WIDTH, 400);
         setEditable(false);
         setFont(new Font("Monospaced", Font.BOLD, 15));
-        setBackground(Color.WHITE);
+        setBackground(Color.BLACK);
         setOpaque(true);
-        //setForeground(Color.WHITE);
+        setForeground(Color.WHITE);
 
     }
 }

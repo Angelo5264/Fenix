@@ -1,17 +1,18 @@
 package Interfaz.Init.HiloProgressBar;
 
+import Interfaz.MainPanel;
+
 import javax.swing.*;
 
 public class HiloProgressBar implements Runnable{
     private final JLabel progressBar;
     private final JTextArea  initText;
-    private final JPanel panelOculto, panelMostrar;
+    private final MainPanel mainPanel;
     private String linea = "-".repeat(78) + " 0%";
-    public HiloProgressBar (JLabel progressBar, JTextArea initText, JPanel panelOculto, JPanel panelMostrar){
+    public HiloProgressBar (JLabel progressBar, JTextArea initText, MainPanel mainPanel){
         this.progressBar=progressBar;
         this.initText=initText;
-        this.panelOculto=panelOculto;
-        this.panelMostrar=panelMostrar;
+        this.mainPanel=mainPanel;
     }
     @Override
     public void run() {
@@ -41,12 +42,7 @@ public class HiloProgressBar implements Runnable{
 
             Thread.sleep(1000);
             SwingUtilities.invokeLater(()->{
-                panelOculto.setVisible(false);
-                panelMostrar.setVisible(true);
-                if(panelOculto.getParent()!=null){
-                    panelOculto.getParent().revalidate(); // vamos al padre qeu contiene dicho panel y recalculamos el tamaño
-                    panelOculto.getParent().repaint(); // redibujamos en el padre de dicho panel
-                }
+                mainPanel.mostrarTerminal();
             });
         }catch (Exception e){
             System.out.println("Error en el hilo de barra de progreso");

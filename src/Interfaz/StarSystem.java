@@ -17,17 +17,21 @@ public class StarSystem extends JFrame {
         setLayout(null);
         setTitle("Fénix OS");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        Panelnit panelnit = new Panelnit(WIDTH, HEIGHT, MARGIN);
+
+
         PanelTerminal panelTerminal = new PanelTerminal(WIDTH,HEIGHT,MARGIN);
-        panelTerminal.setVisible(false);
-        panelnit.setVisible(true);
+        Panelnit panelnit = new Panelnit(WIDTH, HEIGHT, MARGIN, null);
+        MainPanel mainPanel = new MainPanel(WIDTH,HEIGHT, panelnit,panelTerminal);
+        panelnit.setMainPanel(mainPanel);
+        mainPanel.mostarInit();
 
         panelnit.setBounds(0,0,WIDTH,HEIGHT);
         panelTerminal.setBounds(0,0,WIDTH,HEIGHT);
 
-        add(panelTerminal);
-        add(panelnit);
-        panelnit.startThread(panelTerminal,panelnit);
+
+        add(mainPanel);
+
+        panelnit.startThread();
 
 
         setVisible(true);
